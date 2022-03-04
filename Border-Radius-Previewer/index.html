@@ -54,10 +54,26 @@
         <div id="box"></div>
 
         <div id="controls">
-            <input type="number" id="border-bottom-left-radius">
-            <input type="number" id="border-top-left-radius">
-            <input type="number" id="border-top-right-radius">
-            <input type="number" id="border-bottom-right-radius">
+            <div>
+                <input type="number" id="border-bottom-left-radius">
+                <select>
+                    <option value="px">px</option>
+                    <option value="%">%</option>
+                </select>
+            </div>
+            
+            <div>
+                <input type="number" id="border-top-left-radius">
+            </div>
+            
+            <div>
+                <input type="number" id="border-top-right-radius">
+            </div>
+
+            <div>
+                <input type="number" id="border-bottom-right-radius">
+            </div>
+
             <button onclick="setBoder()">setar</button>
         </div>
     </main>
@@ -72,12 +88,18 @@
         const bottomRight = document.querySelector('#border-bottom-right-radius')
 
         //boder-radios config
+        function scale() {
+            const select = document.querySelector(`select`)
+            const options = document.querySelectorAll('select option')
+
+            return select.selectedOptions[select.selectedIndex].innerText
+        }
 
         function setBoder() {
-            box.style.borderBottomLeftRadius = bottomLeft.value +'px' 
-            box.style.borderTopLeftRadius = topLeft.value +'px'
-            box.style.borderTopRightRadius =  topRight.value +'px'
-            box.style.borderBottomRightRadius = bottomRight.value +'px'
+            box.style.borderBottomLeftRadius = bottomLeft.value + scale() 
+            box.style.borderTopLeftRadius = topLeft.value + scale()
+            box.style.borderTopRightRadius =  topRight.value + scale()
+            box.style.borderBottomRightRadius = bottomRight.value + scale()
         }
 
         bottomLeft.addEventListener('change', function () {
