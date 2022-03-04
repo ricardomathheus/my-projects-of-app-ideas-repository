@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            background-color: rgb(32, 32, 32);
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #box{
+            height: 500px;
+            width: 500px;
+            background-color: rgb(107, 107, 138);
+            margin: auto;
+            margin-bottom: 10px;
+
+            border-bottom-left-radius: 0%;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+
+        #controls{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: rgba(255, 255, 255, 0.062);
+            padding: 10px;
+            border-radius: 20px;
+
+        }
+
+        #controls > *{
+            max-width: 500px;
+            margin: 2px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <div id="box"></div>
+
+        <div id="controls">
+            <input type="number" id="border-bottom-left-radius">
+            <input type="number" id="border-top-left-radius">
+            <input type="number" id="border-top-right-radius">
+            <input type="number" id="border-bottom-right-radius">
+            <button onclick="setBoder()">setar</button>
+        </div>
+    </main>
+
+    <script>
+        //box object
+        const box = document.querySelector('#box')
+        //input objects
+        const bottomLeft = document.querySelector('#border-bottom-left-radius')
+        const topLeft = document.querySelector('#border-top-left-radius')
+        const topRight = document.querySelector('#border-top-right-radius')
+        const bottomRight = document.querySelector('#border-bottom-right-radius')
+
+        //boder-radios config
+
+        function setBoder() {
+            box.style.borderBottomLeftRadius = bottomLeft.value +'px' 
+            box.style.borderTopLeftRadius = topLeft.value +'px'
+            box.style.borderTopRightRadius =  topRight.value +'px'
+            box.style.borderBottomRightRadius = bottomRight.value +'px'
+        }
+
+        bottomLeft.addEventListener('change', function () {
+            setBoder()
+        })
+
+        topLeft.addEventListener('change', function () {
+            setBoder()
+        })
+
+        topRight.addEventListener('change', function () {
+            setBoder()
+        })
+
+        bottomRight.addEventListener('change', function () {
+            setBoder()
+        })
+    </script>
+</body>
+</html>
