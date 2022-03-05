@@ -133,7 +133,8 @@
 
         //Copiar CSS
         function copyCSS() {
-            alert( `boder-radios: ${box.style.borderBottomLeftRadius} ${box.style.borderTopLeftRadius} ${box.style.borderTopRightRadius} ${box.style.borderBottomRightRadius};` )
+            navigator.clipboard.writeText(`border-radius: ${box.style.borderRadius};`);
+            alert( 'border-radius copiado' )
         }
     </script>
 </body>
