@@ -115,10 +115,16 @@
         }
 
         function setBoder() {
-            box.style.borderBottomLeftRadius = bottomLeft.value + scale() 
-            box.style.borderTopLeftRadius = topLeft.value + scale()
-            box.style.borderTopRightRadius =  topRight.value + scale()
-            box.style.borderBottomRightRadius = bottomRight.value + scale()
+            function formater(inputValue) {
+                if (inputValue) {
+                    return inputValue + scale()
+                }
+                else{
+                    return '0' + scale()
+                }
+            }
+            //borderRadius: '10px 10px 10px 15px / 20px 20px 20px 20px';
+            box.style.borderRadius = `${formater(topLeft.value)} ${formater(topRight.value)} ${formater(bottomRight.value)} ${formater(bottomLeft.value)}`
         }
 
         //verificar alterações no input
