@@ -56,10 +56,6 @@
         <div id="controls">
             <div>
                 <input type="number" id="border-bottom-left-radius">
-                <select>
-                    <option value="px">px</option>
-                    <option value="%">%</option>
-                </select>
             </div>
             
             <div>
@@ -74,7 +70,14 @@
                 <input type="number" id="border-bottom-right-radius">
             </div>
 
-            <button onclick="setBoder()">setar</button>
+            <div>
+                <button onclick="setBoder()">setar</button>
+                <select>
+                    <option value="px">px</option>
+                    <option value="%">%</option>
+                </select>
+            </div>
+            
         </div>
     </main>
 
@@ -91,8 +94,7 @@
         function scale() {
             const select = document.querySelector(`select`)
             const options = document.querySelectorAll('select option')
-
-            return select.selectedOptions[select.selectedIndex].innerText
+            return options[select.selectedIndex].innerText
         }
 
         function setBoder() {
