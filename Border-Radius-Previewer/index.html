@@ -37,6 +37,8 @@
             background-color: rgb(107, 107, 138);
             margin: auto;
             margin-bottom: 10px;
+
+            border-radius: 0px;
         }
 
         #controls{
@@ -88,6 +90,8 @@
                     <option value="px">px</option>
                     <option value="%">%</option>
                 </select>
+
+                <button onclick="copyCSS()">copiar css</button>
             </div>
         </div>
     </main>
@@ -127,6 +131,10 @@
             }
         }
 
+        //Copiar CSS
+        function copyCSS() {
+            alert( `boder-radios: ${box.style.borderBottomLeftRadius} ${box.style.borderTopLeftRadius} ${box.style.borderTopRightRadius} ${box.style.borderBottomRightRadius};` )
+        }
     </script>
 </body>
 </html>
