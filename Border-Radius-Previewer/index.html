@@ -90,9 +90,11 @@
         const topRight = document.querySelector('#border-top-right-radius')
         const bottomRight = document.querySelector('#border-bottom-right-radius')
 
+        const inputs = [bottomLeft, topLeft, topRight, bottomRight]
+
         //boder-radios config
         function scale() {
-            const select = document.querySelector(`select`)
+            const select = document.querySelector('select')
             const options = document.querySelectorAll('select option')
             return options[select.selectedIndex].innerText
         }
@@ -104,21 +106,16 @@
             box.style.borderBottomRightRadius = bottomRight.value + scale()
         }
 
-        bottomLeft.addEventListener('change', function () {
-            setBoder()
-        })
+        //verificar alterações no input
+        for (const key in inputs) { 
+            if (inputs.hasOwnProperty.call(inputs, key)) {
+                const element = inputs[key];
+                element.addEventListener('change', function () {
+                    setBoder()
+                })
+            }
+        }
 
-        topLeft.addEventListener('change', function () {
-            setBoder()
-        })
-
-        topRight.addEventListener('change', function () {
-            setBoder()
-        })
-
-        bottomRight.addEventListener('change', function () {
-            setBoder()
-        })
     </script>
 </body>
 </html>
