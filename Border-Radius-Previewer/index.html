@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Border Radius Previewer</title>
     <style>
-        body{
+
+        *{
             margin: 0px;
             padding: 0px;
+        }
+        body{
             background-color: rgb(32, 32, 32);
             height: 100vh;
 
@@ -16,18 +19,24 @@
             justify-content: center;
             align-items: center;
         }
+        main{
+            height: 50vh;
+            width: 100vh;
+        }
 
         #box{
-            height: 500px;
-            width: 500px;
+            min-height: 100px;
+            min-width: 100px;
+            
+            height: 80%;
+            width: 40%;
+
+            max-height: 1000px;
+            max-width: 1000px;
+
             background-color: rgb(107, 107, 138);
             margin: auto;
             margin-bottom: 10px;
-
-            border-bottom-left-radius: 0%;
-            border-top-left-radius: 0px;
-            border-top-right-radius: 0px;
-            border-bottom-right-radius: 0px;
         }
 
         #controls{
@@ -38,13 +47,16 @@
             background-color: rgba(255, 255, 255, 0.062);
             padding: 10px;
             border-radius: 20px;
+        }
 
+        #controls{
+            max-width: 200px;
+            margin: auto;
         }
 
         #controls > *{
             max-width: 500px;
             margin: 2px;
-
         }
 
     </style>
@@ -77,7 +89,6 @@
                     <option value="%">%</option>
                 </select>
             </div>
-            
         </div>
     </main>
 
