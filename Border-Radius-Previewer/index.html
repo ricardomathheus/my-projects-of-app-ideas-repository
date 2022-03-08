@@ -49,10 +49,8 @@
             background-color: rgba(255, 255, 255, 0.062);
             padding: 10px;
             border-radius: 20px;
-        }
 
-        #controls{
-            max-width: 200px;
+            max-width: 400px;
             margin: auto;
         }
 
@@ -70,18 +68,22 @@
         <div id="controls">
             <div>
                 <input type="number" id="border-bottom-left-radius">
+                <input class="extra-options" type="number" id="border-bottom-left-radius2">
             </div>
             
             <div>
                 <input type="number" id="border-top-left-radius">
+                <input class="extra-options" type="number" id="border-top-left-radius2">
             </div>
             
             <div>
                 <input type="number" id="border-top-right-radius">
+                <input class="extra-options" type="number" id="border-top-right-radius2">
             </div>
 
             <div>
                 <input type="number" id="border-bottom-right-radius">
+                <input class="extra-options" type="number" id="border-bottom-right-radius2">
             </div>
 
             <div>
@@ -105,7 +107,12 @@
         const topRight = document.querySelector('#border-top-right-radius')
         const bottomRight = document.querySelector('#border-bottom-right-radius')
 
-        const inputs = [bottomLeft, topLeft, topRight, bottomRight]
+        const bottomLeft2 = document.querySelector('#border-bottom-left-radius2')
+        const topLeft2 = document.querySelector('#border-top-left-radius2')
+        const topRight2 = document.querySelector('#border-top-right-radius2')
+        const bottomRight2 = document.querySelector('#border-bottom-right-radius2')
+
+        const inputs = [bottomLeft, topLeft, topRight, bottomRight, bottomLeft2, topLeft2, topRight2, bottomRight2]
 
         //boder-radios config
         function scale() {
@@ -124,7 +131,9 @@
                 }
             }
             //borderRadius: '10px 10px 10px 15px / 20px 20px 20px 20px';
-            box.style.borderRadius = `${formater(topLeft.value)} ${formater(topRight.value)} ${formater(bottomRight.value)} ${formater(bottomLeft.value)}`
+            box.style.borderRadius = 
+            `${formater(topLeft.value)} ${formater(topRight.value)} ${formater(bottomRight.value)} ${formater(bottomLeft.value)}` + 
+            ` / ${formater(topLeft2.value)} ${formater(topRight2.value)} ${formater(bottomRight2.value)} ${formater(bottomLeft2.value)}`
         }
 
         //verificar alterações no input
