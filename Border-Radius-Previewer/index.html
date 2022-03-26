@@ -59,6 +59,10 @@
             margin: 2px;
         }
 
+        #controls .disable{
+            display: none;
+        }
+
     </style>
 </head>
 <body>
@@ -68,22 +72,22 @@
         <div id="controls">
             <div>
                 <input type="number" id="border-bottom-left-radius">
-                <input class="extra-options" type="number" id="border-bottom-left-radius2">
+                <input class="extra-options disable" type="number" id="border-bottom-left-radius2">
             </div>
             
             <div>
                 <input type="number" id="border-top-left-radius">
-                <input class="extra-options" type="number" id="border-top-left-radius2">
+                <input class="extra-options disable" type="number" id="border-top-left-radius2">
             </div>
             
             <div>
                 <input type="number" id="border-top-right-radius">
-                <input class="extra-options" type="number" id="border-top-right-radius2">
+                <input class="extra-options disable" type="number" id="border-top-right-radius2">
             </div>
 
             <div>
                 <input type="number" id="border-bottom-right-radius">
-                <input class="extra-options" type="number" id="border-bottom-right-radius2">
+                <input class="extra-options disable" type="number" id="border-bottom-right-radius2">
             </div>
 
             <div>
@@ -94,6 +98,7 @@
                 </select>
 
                 <button onclick="copyCSS()">copiar css</button>
+                <button onclick="changeEditMode()">mudar mode de edição</button>
             </div>
         </div>
     </main>
@@ -101,6 +106,7 @@
     <script>
         //box object
         const box = document.querySelector('#box')
+
         //input objects
         const bottomLeft = document.querySelector('#border-bottom-left-radius')
         const topLeft = document.querySelector('#border-top-left-radius')
@@ -113,12 +119,22 @@
         const bottomRight2 = document.querySelector('#border-bottom-right-radius2')
 
         const inputs = [bottomLeft, topLeft, topRight, bottomRight, bottomLeft2, topLeft2, topRight2, bottomRight2]
+        const primaryInputs = [bottomLeft, topLeft, topRight, bottomRight]
+        const secondaryInputs = [bottomLeft2, topLeft2, topRight2, bottomRight2]
 
         //boder-radios config
         function scale() {
             const select = document.querySelector('select')
             const options = document.querySelectorAll('select option')
             return options[select.selectedIndex].innerText
+        }
+
+        function equalValuesOfBlanks(inputElement) {
+            let inputElement2 = document.querySelector(`#${inputElement.id}2`)
+            if (inputElement2.value == '') {
+                inputElement2.value = inputElement.value
+            }
+            
         }
 
         function setBoder() {
@@ -130,7 +146,7 @@
                     return '0' + scale()
                 }
             }
-            //borderRadius: '10px 10px 10px 15px / 20px 20px 20px 20px';
+            
             box.style.borderRadius = 
             `${formater(topLeft.value)} ${formater(topRight.value)} ${formater(bottomRight.value)} ${formater(bottomLeft.value)}` + 
             ` / ${formater(topLeft2.value)} ${formater(topRight2.value)} ${formater(bottomRight2.value)} ${formater(bottomLeft2.value)}`
@@ -141,6 +157,7 @@
             if (inputs.hasOwnProperty.call(inputs, key)) {
                 const element = inputs[key];
                 element.addEventListener('change', function () {
+                    equalValuesOfBlanks(element)
                     setBoder()
                 })
             }
@@ -150,6 +167,36 @@
         function copyCSS() {
             navigator.clipboard.writeText(`border-radius: ${box.style.borderRadius};`);
             alert( 'border-radius copiado' )
+        }
+
+        //mudar modo de edição
+        var editMode = 0
+        function changeEditMode() {
+            if (editMode == 1) {
+
+                for (const key in secondaryInputs) {
+                    if (secondaryInputs.hasOwnProperty.call(secondaryInputs, key)) {
+                        const element = secondaryInputs[key];
+                        element.classList.add('disable')
+                        
+                    }
+                }
+                
+                editMode = 0
+
+            } else {
+
+                for (const key in secondaryInputs) {
+                    if (secondaryInputs.hasOwnProperty.call(secondaryInputs, key)) {
+                        const element = secondaryInputs[key]
+                        element.classList.remove('disable')
+                        
+                    }
+             
+                }
+
+                editMode = 1
+            }
         }
     </script>
 </body>
